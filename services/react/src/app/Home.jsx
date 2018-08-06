@@ -16,37 +16,44 @@ class Home extends React.Component {
 					<header>
 						<h1 className='header'>Wikipedia Viewer!</h1>
 					</header>
+					<ModeContext.Consumer>
+					{
+						({loading, randomSubmit}) => {
+							return (
+								<label>
+									<button
+									disabled={loading}
+									type="submit"
+									onClick={(e) => randomSubmit(e)}
+									onSubmit={(e) => randomSubmit(e)}>
+										{loading ? 'Loading...' : 'Learn something new'}
+									</button>
+								</label>
+							);
+						}
+					}
+					</ModeContext.Consumer>
 					<section className='sec-input'>
-							<fieldset className='inputoptions'>
-								<ModeContext.Consumer>
-								{
-									({searchMode}) => {
-										return (
-											<InputField searchMode={searchMode} />
-										);
-									}
-								}
-								</ModeContext.Consumer>
-								<p className='inputhelper'>Search for a topic</p>
-							</fieldset>
-							<ModeContext.Consumer>
-							{
-								({loading, handleSubmit}) => {
-									return (
-										<label>
-											<input
-											disabled={loading}
-											type="submit"
-											onClick={(e) => handleSubmit(e)}
-											onSubmit={(e) => handleSubmit(e)}
-											value={loading ? 'Loading...' : 'Find article'} />
-										</label>
-									);
-								}
+						<InputField />
+						<p className='input-helper'>Search for a topic</p>
+						<ModeContext.Consumer>
+						{
+							({loading, handleSubmit}) => {
+								return (
+									<label>
+										<input
+										disabled={loading}
+										type="submit"
+										onClick={(e) => handleSubmit(e)}
+										onSubmit={(e) => handleSubmit(e)}
+										value={loading ? 'Loading...' : 'Find article'} />
+									</label>
+								);
 							}
-							</ModeContext.Consumer>
+						}
+						</ModeContext.Consumer>
 					</section>
-					<section className='sec-displayarea'>
+					<section className='results'>
 						<ModeContext.Consumer>
 						{
 							({loading, data}) => {

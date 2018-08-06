@@ -17,6 +17,11 @@ export class ModeProvider extends React.Component {
 			this.setState({ searchField: e.target.value });
 		};
 
+		this.randomSubmit = (e) => {
+			e.preventDefault();
+			window.open('https://en.wikipedia.org/wiki/Special:Random');
+		};
+
 		this.handleSubmit = (e) => {
 			e.preventDefault();
 
@@ -54,6 +59,7 @@ export class ModeProvider extends React.Component {
 				...this.state,
 				updateSearch: this.updateSearch,
 				handleSubmit: this.handleSubmit,
+				randomSubmit: this.randomSubmit,
 			}}>
 				{ this.props.children }
 			</ModeContext.Provider>
