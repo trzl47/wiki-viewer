@@ -1,0 +1,23 @@
+version: '3'
+services:
+  wiki-nginx:
+    image: trzl/portfolio:wiki-react.1
+    container_name: wiki-nginx
+    restart: unless-stopped
+  reverseproxy:
+    image: trzl/portfolio:wiki-proxy.1
+    container_name: wiki-proxy
+    restart: unless-stopped
+    expose:
+      - "80"
+      - "443"
+    depends_on:
+      - wiki-nginx
+    environment:
+      VIRTUAL_HOST: wikistart.tbrownkcdev.com
+      LETSENCRYPT_HOST: wikistart.tbrownkcdev.com
+      LETSENCRYPT_EMAIL: brownty47@gmail.com
+networks:
+  default:
+    external:
+      name: webproxy

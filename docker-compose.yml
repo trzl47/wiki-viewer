@@ -1,0 +1,39 @@
+version: '3'
+services:
+  react:
+    build:
+      context: ./services/react/
+      dockerfile: Dockerfile
+    image: react
+    container_name: react
+    restart: unless-stopped
+    volumes:
+    #      - ./services/react:/usr/src/app
+      - ./services/react:/app:z  # z needed for selinux
+      - /app/node_modules
+      - /build/client-dev
+    env_file: .env
+  wiki-nginx:
+    build:
+      context: ./services/wiki-nginx/
+      dockerfile: Dockerfile
+    image: wiki-nginx
+    container_name: wiki-nginx
+    restart: always
+    volumes:
+      - ./services/react/build/client-dev/:/client
+    env_file: .env
+    depends_on:
+      - react
+  reverseproxy:
+    build:
+      context: ./services/reverseproxy/
+      dockerfile: Dockerfile
+    image: reverseproxy
+    container_name: reverseproxy
+    restart: always
+    ports:
+      - 80:80 # react app
+    depends_on:
+      - react
+      - wiki-nginx
