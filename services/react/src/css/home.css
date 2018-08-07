@@ -1,8 +1,6 @@
 .homepage {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }
 
 .header {
@@ -12,4 +10,9 @@
 
 .mode {
 	color: #000;
+}
+
+.sec-input {
+	display: flex;
+	flex-direction: row;
 }

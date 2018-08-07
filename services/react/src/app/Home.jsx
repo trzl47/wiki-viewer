@@ -1,8 +1,8 @@
 // Libs
 import React from 'react';
 // components
-import InputField from './components/InputField';
-import Article from './components/Article';
+import InputField from './components/InputField.jsx';
+import Articles from './components/Articles.jsx';
 // style
 import '../css/home.css';
 // context
@@ -16,26 +16,8 @@ class Home extends React.Component {
 					<header>
 						<h1 className='header'>Wikipedia Viewer!</h1>
 					</header>
-					<ModeContext.Consumer>
-					{
-						({loading, randomSubmit}) => {
-							return (
-								<label>
-									<button
-									disabled={loading}
-									type="submit"
-									onClick={(e) => randomSubmit(e)}
-									onSubmit={(e) => randomSubmit(e)}>
-										{loading ? 'Loading...' : 'Learn something new'}
-									</button>
-								</label>
-							);
-						}
-					}
-					</ModeContext.Consumer>
 					<section className='sec-input'>
 						<InputField />
-						<p className='input-helper'>Search for a topic</p>
 						<ModeContext.Consumer>
 						{
 							({loading, handleSubmit}) => {
@@ -53,6 +35,7 @@ class Home extends React.Component {
 						}
 						</ModeContext.Consumer>
 					</section>
+					{/* <p className='input-helper'>Search for a topic</p> */}
 					<section className='results'>
 						<ModeContext.Consumer>
 						{
@@ -63,7 +46,7 @@ class Home extends React.Component {
 										loading ?
 										'Searching for article...'
 										:
-										<Article data={data} />
+										<Articles data={data} />
 									}
 									</React.Fragment>
 								);

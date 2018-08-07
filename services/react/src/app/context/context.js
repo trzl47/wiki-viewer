@@ -24,13 +24,14 @@ export class ModeProvider extends React.Component {
 
 		this.handleSubmit = (e) => {
 			e.preventDefault();
+			const api = `https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=${this.state.searchField}&origin=*`;
 
 			this.setState({ loading: true });
 
-			axios.post(`${PRTCL}://${HOST}/weather`, {...this.state})
+			axios.post(api)
 			.then((response) => {
 				this.setState({
-					data: response.data,
+					data: response.data.query.pages,
 				});
 			})
 			.catch(error => {
