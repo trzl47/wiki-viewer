@@ -1,0 +1,18 @@
+.homepage {
+	display: flex;
+	flex-direction: column;
+}
+
+.header {
+	background-color: #3b5998;
+	color: #fff;
+}
+
+.mode {
+	color: #000;
+}
+
+.sec-input {
+	display: flex;
+	flex-direction: row;
+}

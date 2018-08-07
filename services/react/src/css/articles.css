@@ -1,0 +1,33 @@
+.articles {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	grid-gap: 20px;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 10rem;
+}
+
+.article {
+	cursor: pointer;
+}
+
+
+.article-link {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-areas:
+		'page-img extract';
+	align-items: center;
+	justify-content: flex-start;
+	padding: 10px;
+	text-decoration: none;
+	background-color: #fff;
+	color: #000;
+}
+.article-link:hover {
+	background-color: #ffa500;
+}
+.page-img img {
+	max-width: 50px;
+}

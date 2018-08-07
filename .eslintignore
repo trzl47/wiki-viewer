@@ -1,0 +1,8 @@
+/src/server-es5.js
+/src/static/js
+/node_modules
+**/node_modules
+/node_modules/*
+node_modules
+node_modules/*
+client/node_modules*
