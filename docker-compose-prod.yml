@@ -14,8 +14,8 @@ services:
     depends_on:
       - wiki-nginx
     environment:
-      VIRTUAL_HOST: wikistart.tbrownkcdev.com
-      LETSENCRYPT_HOST: wikistart.tbrownkcdev.com
+      VIRTUAL_HOST: wikiview.tbrownkcdev.com
+      LETSENCRYPT_HOST: wikiview.tbrownkcdev.com
       LETSENCRYPT_EMAIL: brownty47@gmail.com
 networks:
   default:
